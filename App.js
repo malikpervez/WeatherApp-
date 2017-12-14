@@ -22,6 +22,16 @@ class WeatherApp extends Component {
     this.setState({ zip: event.nativeEvent.text });
   }
   render() {
+    let content = null;
+    if(this.state.forecast !== null) {
+      content = (
+        <Forecast 
+          main = {this.state.forecast.main}
+          description = {this.state.forecast.description}
+          temp = {this.state.forecast.temp}
+        />
+      )
+    }
   return (
     <View style = {styles.container}>
       <Text style = {styles.welcome}>

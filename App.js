@@ -6,13 +6,19 @@ import {
   View,
   TextInput
 } from 'react-native';
+import Forecast from './components/Forecast';
 
 class WeatherApp extends Component {
   constructor(props){
     super(props);
-    this.state = { zip: " "}
+    this.state = { 
+    //setting the state to an empty string while keeping the forecast null 
+      zip: "",
+      forecast: null
+    };
   }
   _handleTextChange = event => {
+    //this function handles the text change when typing in a zip
     this.setState({ zip: event.nativeEvent.text });
   }
   render() {

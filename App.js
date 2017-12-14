@@ -1,41 +1,36 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-export default class App extends Component<{}> {
+class WeatherApp extends Component {
+  constructor(props){
+    super(props);
+    this.state = { zip: " "}
+  }
+  _handleTextChange = event => {
+    this.setState({ zip: event.nativeEvent.text });
+  }
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
+  return (
+    <View style = {styles.container}>
+      <Text style = {styles.welcome}>
+        Please Input {this.state.zip}
+      </Text>
+      <TextInput
+        style = {styles.input}
+        onSubmitEditing={this._handleTextChange}
+      />
+    </View>
+    )
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -49,9 +44,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  input: {
+    fontSize: 20,
+    borderWidth: 2,
+    padding: 2,
+    height: 40,
+    width: 100,
+    textAlign: 'center'
   },
 });
+
+export default WeatherApp;

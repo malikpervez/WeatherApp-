@@ -7,6 +7,7 @@ import {
   TextInput
 } from 'react-native';
 import Forecast from './components/Forecast';
+import Weather from './components/Weather'
 
 class WeatherApp extends Component {
   constructor(props){
@@ -19,7 +20,10 @@ class WeatherApp extends Component {
   }
   _handleTextChange = event => {
     //this function handles the text change when typing in a zip
-    this.setState({ zip: event.nativeEvent.text });
+    let zip = event.nativeEvent.text;
+    Weather.fetchForecast(zip).then(forecast => {
+      this.setState({forecast: forecast})
+    })
   }
   render() {
     let content = null;

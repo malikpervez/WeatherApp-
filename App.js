@@ -45,6 +45,7 @@ class WeatherApp extends Component {
         style = {styles.input}
         onSubmitEditing={this._handleTextChange}
       />
+      {content}
     </View>
     )
   }

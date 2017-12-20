@@ -42,6 +42,7 @@ class WeatherApp extends Component {
       <Image 
         source={require('./images/tree.jpg')}
         resizeMode='cover'
+        position='absolute'
         style={styles.backdrop}
       >
        </Image>
